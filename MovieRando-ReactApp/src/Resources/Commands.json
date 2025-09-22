@@ -1,0 +1,6 @@
+{
+  "help": "Available commands: help, about, contact, clear,stremio ",
+  "about": "MovieRando is a terminal-style movie picker! You can use Stremio to stream your movies and shows . 🎬",
+  "clear": "clear terminal and the movie ",
+  "stremio": "Stremio is a modern media center that allows you to watch and organize video content from different sources, including movies, TV shows, web channels, and live TV. It provides a user-friendly interface and supports various platforms such as Windows, macOS, Linux, Android, and iOS. Stremio offers features like content discovery, automatic subtitles, and integration with third-party add-ons to enhance your viewing experience."
+}

@@ -1,0 +1,5 @@
+{
+  "welcome": " 🎬 Welcome to MovieRando CLI! \n\n Discover movies and shows effortlessly.\nType 'get-started' to see how to begin.\nType 'help' for a full list of commands.",
+  "getStarted": "Try these commands:\n\n- Random movie/show: mr -random\n- Search movie/show by name: mr -search -name=Inception\n- Search by genre: mr -search -genre=action\n- Search by year: mr -search -year=2010\n- Combine flags: mr -search -name=Inception -genre=action -year=2010",
+  "help": "Available commands:\n\nmr -random          Fetch a random movie or show\nmr -search          Search movies/shows with flags\n  Flags:\n    -name           Search by name\n    -genre          Filter by genre\n    -year           Filter by year\n    -minRating      Minimum rating (0-10)\n    -language       Language (ISO code, e.g., en)\n    -type           Type: movie or tv\nclear               Clear the terminal\nget-started         Show how to get started quickly\nhelp                Show this help message"
+}
