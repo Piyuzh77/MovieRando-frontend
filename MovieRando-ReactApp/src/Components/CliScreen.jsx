@@ -231,18 +231,16 @@ export default function CliScreen() {
             </div>
           ))}
         </div>
-
-        <div className="p-4 border-t h-12 flex-1 border-green-400]">
+        <div className="border-t border-green-400 p-2 sm:p-4 flex items-center max-w-screen">
           <FloatingInput
             prompt={prompt}
             input={input}
             setInput={setInput}
             handleKeys={handleKeys}
           />
-          <div>
-            <h1></h1>
-          </div>
         </div>
+
+        <h1></h1>
       </div>
     </div>
   );
