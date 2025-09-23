@@ -13,7 +13,6 @@ export default function CliScreen() {
   const prompt = "user0@movieRando";
   const historyRef = useRef(null);
 
-  // Typing effect utility
   const typeText = (text, callback, speed = 25) => {
     return new Promise((resolve) => {
       let i = 0;
@@ -28,14 +27,12 @@ export default function CliScreen() {
     });
   };
 
-  // Show welcome message on load
   useEffect(() => {
     typeText(messages.welcome, (txt) =>
       setHistory([{ command: "", output: txt }])
     ).then(() => setWelcomeTyped(true));
   }, []);
 
-  // Auto-scroll
   useEffect(() => {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
@@ -72,7 +69,6 @@ export default function CliScreen() {
 
       let output;
 
-      // Built-in commands from JSON
       if (command === "help") {
         setHistory((prev) => [...prev, { command, output: messages.help }]);
         setInput("");
@@ -88,7 +84,6 @@ export default function CliScreen() {
         return;
       }
 
-      // Clear command
       if (command === "clear") {
         setHistory([]);
         setInput("");
@@ -96,7 +91,6 @@ export default function CliScreen() {
         return;
       }
 
-      // Check commandRegistry
       const entry = Object.entries(commandRegistry).find(([key]) =>
         command.startsWith(key)
       );
@@ -106,7 +100,6 @@ export default function CliScreen() {
         const args = command.slice(baseCommand.length).trim();
         const result = await func(args);
 
-        // Carousel info object
         if (!result.error) {
           let infoObj = null;
           if (baseCommand === "mr -random") {
@@ -120,7 +113,7 @@ export default function CliScreen() {
               stremioLink: result.stremioLink,
               genres: result.genres,
               overview: result.overview,
-              rating: result.rating,
+              rating: result.vote_average,
               vote_count: result.vote_count,
             };
           }
@@ -138,7 +131,6 @@ export default function CliScreen() {
       setHistoryIndex(null);
     }
 
-    // Arrow keys
     if (e.key === "ArrowUp") {
       e.preventDefault();
       if (!history.length) return;
@@ -165,7 +157,6 @@ export default function CliScreen() {
 
   return (
     <div className="relative min-h-screen bg-black text-green-400 font-mono flex">
-      {/* Left: Carousel */}
       <div className="w-[60%] h-[70%] flex justify-center items-start p-4 overflow-hidden">
         <SlotMachineCarousel
           finalPoster={posters[posters.length - 1] || null}
@@ -173,9 +164,7 @@ export default function CliScreen() {
         />
       </div>
 
-      {/* Right: Terminal panel */}
       <div className="w-[40%] relative border-l border-green-400 flex flex-col">
-        {/* Scrollable terminal output */}
         <div
           ref={historyRef}
           className="p-4 overflow-y-scroll"
@@ -218,7 +207,6 @@ export default function CliScreen() {
                     </div>
                   ))}
 
-                  {/* Pagination buttons */}
                   <div className="w-full flex-2 flex gap-2 mt-2">
                     {item.output.page > 1 && (
                       <button
@@ -244,7 +232,6 @@ export default function CliScreen() {
           ))}
         </div>
 
-        {/* Input fixed at bottom */}
         <div className="p-4 border-t h-12 flex-1 border-green-400]">
           <FloatingInput
             prompt={prompt}

@@ -24,7 +24,7 @@ const idToGenre = Object.fromEntries(
   Object.entries(genreMap).map(([name, id]) => [id, name])
 );
 
-// Parse CLI text into key=value pairs
+
 export const parseArgs = (args) => {
   const params = {};
   args.split(" ").forEach((arg) => {
@@ -57,7 +57,6 @@ export const fetchRandomDynamic = async (args) => {
   }
 };
 
-// Search media with pagination
 export const searchMediaDynamic = async (args, page = 1) => {
   try {
     const params = parseArgs(args);
@@ -85,7 +84,6 @@ export const searchMediaDynamic = async (args, page = 1) => {
       stremioLink: m.stremioLink || null,
       genres: (m.genre_ids || []).map((id) => idToGenre[id] || "Unknown"),
     }));
-
     return { type: "list", items, page: data.page, total_pages: data.total_pages };
   } catch {
     return { error: "Error fetching search results ❌" };

@@ -1,4 +1,3 @@
-// FloatingInput.jsx
 import React from "react";
 
 export default function FloatingInput({ prompt, input, setInput, handleKeys }) {
